@@ -71,8 +71,6 @@ class NumberGuessingGame implements Game
     public NumberGuessingGame()
     {
         logBuffer = new ArrayList<>();
-        score = loadScoreFromLog();
-        System.out.println(score);
     }
 
     /**
@@ -93,10 +91,11 @@ class NumberGuessingGame implements Game
         int userGuess;
         int computerNumber;
 
-        score = 0;
+        score = loadScoreFromLog();
         random = new Random();
 
         System.out.println("Welcome to the guessing game!");
+        System.out.println("Previous score: " + score);
         System.out.print("In this game, you will guess a random number from ");
         System.out.println(MIN_GUESS + "-" + MAX_GUESS);
         System.out.println("Or, enter " + ESCAPE_INPUT + " to quit the game.");
@@ -279,57 +278,49 @@ class NumberGuessingGame implements Game
     {
         try
         {
-            final RandomAccessFile file;
+            final List<String> lines;
             String lastLine;
             int scoreIndex;
+            int lineIndex;
 
-            if(!Files.exists(LOG_FILE_PATH))
+            if (!Files.exists(LOG_FILE_PATH))
             {
                 return 0;
             }
 
-            file = new RandomAccessFile(LOG_FILE_PATH.toFile(), "r");
+            lines = Files.readAllLines(LOG_FILE_PATH);
 
-            if(file.length() == 0)
+            if (lines.isEmpty())
             {
-                file.close();
                 return 0;
             }
 
-            long pointer;
-            pointer = file.length() - 1;
+            lineIndex = lines.size() - 1;
 
-            while(pointer >= 0)
+            while (lineIndex >= 0 && lines.get(lineIndex).isBlank())
             {
-                file.seek(pointer);
-
-                if(file.readByte() == '\n')
-                {
-                    break;
-                }
-
-                pointer--;
+                lineIndex--;
             }
 
-            if(pointer < 0)
+            if (lineIndex < 0)
             {
-                file.seek(0);
+                return 0;
             }
 
-            lastLine = file.readLine();
-            file.close();
+            lastLine = lines.get(lineIndex);
 
             scoreIndex = lastLine.lastIndexOf("Score:");
 
-            if(scoreIndex != -1)
+            if (scoreIndex != -1)
             {
                 return Integer.parseInt(lastLine.substring(scoreIndex + 6).trim());
             }
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             System.out.println("Failed to load previous score.");
         }
+
         return 0;
     }
 }
