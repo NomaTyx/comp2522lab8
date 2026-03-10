@@ -1,5 +1,8 @@
 /**
- * An interface containing all methods that a game might need to contain.
+ * Represents a generic game.
+ *
+ * Any class implementing this interface must provide a method
+ * that contains the core logic used to run the game.
  */
 public interface Game
 {
