@@ -63,12 +63,16 @@ class NumberGuessingGame implements Game
      */
     private static final Path LOG_FILE_PATH = Paths.get("game_log.txt");
 
+    private int score;
+
     /**
      * Constructor.
      */
     public NumberGuessingGame()
     {
         logBuffer = new ArrayList<>();
+        score = loadScoreFromLog();
+        System.out.println(score);
     }
 
     /**
@@ -85,7 +89,6 @@ class NumberGuessingGame implements Game
     public void runGame()
     {
         final Random random;
-        int score;
         String userInput;
         int userGuess;
         int computerNumber;
@@ -293,7 +296,8 @@ class NumberGuessingGame implements Game
                 return 0;
             }
 
-            long pointer = file.length() - 1;
+            long pointer;
+            pointer = file.length() - 1;
 
             while(pointer >= 0)
             {
@@ -326,8 +330,6 @@ class NumberGuessingGame implements Game
         {
             System.out.println("Failed to load previous score.");
         }
-
         return 0;
     }
-
 }
