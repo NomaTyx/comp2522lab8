@@ -1,0 +1,21 @@
+Player guess: 4 | Generated number:4 | Player won | Score: 1
+Player guess: 4 | Generated number:3 | Player lost | Score: 1
+Player guess: 4 | Generated number:1 | Player lost | Score: 1
+Player guess: 4 | Generated number: 5 | Player lost | Score: 0
+Player guess: 2 | Generated number: 3 | Player lost | Score: 0
+Player guess: 2 | Generated number: 1 | Player lost | Score: 0
+Player guess: 2 | Generated number: 4 | Player lost | Score: 0
+Player guess: 2 | Generated number: 1 | Player lost | Score: 0
+Player guess: 2 | Generated number: 2 | Player won | Score: 1
+Player guess: 2 | Generated number: 4 | Player lost | Score: 1
+Player guess: 2 | Generated number: 5 | Player lost | Score: 1
+Player guess: 2 | Generated number: 2 | Player won | Score: 2
+Player guess: 2 | Generated number: 1 | Player lost | Score: 2
+Player guess: 2 | Generated number: 4 | Player lost | Score: 2
+Player guess: 2 | Generated number: 5 | Player lost | Score: 2
+Player guess: 2 | Generated number: 2 | Player won | Score: 3
+Player guess: 2 | Generated number: 2 | Player won | Score: 4
+Player guess: 2 | Generated number: 2 | Player won | Score: 5
+Player guess: 2 | Generated number: 1 | Player lost | Score: 5
+Player guess: 2 | Generated number: 5 | Player lost | Score: 5
+Player guess: 2 | Generated number: 4 | Player lost | Score: 5
